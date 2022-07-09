@@ -1,9 +1,10 @@
 # common - initialization, variables, functions
 
-project = vmware_workstation_cli
+project = vmware-workstation-cli
+module = vmware_workstation_cli
 organization = rstms
 branch != git branch | awk '/\*/{print $$2}'
-version != awk <$(project)/version.py -F\" '/^__version__/{print $$2}'
+version != awk <$(module)/version.py -F\" '/^__version__/{print $$2}'
 python_src != find . -name \*.py
 other_src := $(call makefiles) LICENSE README.md
 src := $(python_src) $(other_src)
