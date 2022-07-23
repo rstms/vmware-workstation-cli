@@ -142,11 +142,11 @@ def status(ctx, name):
 def power(ctx, name, state):
     """start virtual machine"""
     status = ctx.obj.status(name)
-    power_state = status['power_state']
-    if state=='on' and power_state=='poweredOn':
-        result = {'power_state': 'poweredOn'}
-    elif state=='off' and power_state=='poweredOff':
-        result = {'power_state': 'poweredOff'}
+    power_state = status["power_state"]
+    if state == "on" and power_state == "poweredOn":
+        result = {"power_state": "poweredOn"}
+    elif state == "off" and power_state == "poweredOff":
+        result = {"power_state": "poweredOff"}
     else:
         result = ctx.obj.set_power_state(name, state)
     output(result)
