@@ -141,7 +141,15 @@ def status(ctx, name):
 @click.pass_context
 def power(ctx, name, state):
     """start virtual machine"""
-    output(ctx.obj.set_power_state(name, state))
+    status = ctx.obj.status(name)
+    power_state = status['power_state']
+    if state=='on' and power_state=='poweredOn':
+        result = {'power_state': 'poweredOn'}
+    elif state=='off' and power_state=='poweredOff':
+        result = {'power_state': 'poweredOff'}
+    else:
+        result = ctx.obj.set_power_state(name, state)
+    output(result)
 
 
 if __name__ == "__main__":
