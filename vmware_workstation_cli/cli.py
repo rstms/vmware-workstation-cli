@@ -78,9 +78,21 @@ class API:
 @click.group
 @click.version_option(message=header)
 @click.option(
-    "-h", "--host", type=str, default="localhost", envvar="VMWARE_API_HOST", help="REST server hostname"
+    "-h",
+    "--host",
+    type=str,
+    default="localhost",
+    envvar="VMWARE_API_HOST",
+    help="REST server hostname",
 )
-@click.option("-p", "--port", type=int, default=8697, envvar="VMWARE_API_PORT", help="REST server port")
+@click.option(
+    "-p",
+    "--port",
+    type=int,
+    default=8697,
+    envvar="VMWARE_API_PORT",
+    help="REST server port",
+)
 @click.option(
     "-u",
     "--username",
